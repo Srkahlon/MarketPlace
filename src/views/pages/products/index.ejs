@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <div class="form-group">
+            <div class = "row">
+                <div class = "col-md-6">
+                </div>
+                <div>
+                    <%if (user) { %>
+                        <strong>Welcome back</strong> <%- user.name%>&nbsp;&nbsp;
+                    <% } else{ %>
+                        <a href="/login" class="badge badge-primary">Change User</a>
+                    <% } %>
+                        <a href="/products/add" class="badge badge-primary">Add Product</a>
+                    <%if (user) { %>
+                        <a href="/products/recommend" class="badge badge-primary">Recommendation</a>
+                        <a href="/logout" class="badge badge-primary">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Sale Price</th>
+                        <th scope="col">Last Modified</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(function(product) { %>
+                        <tr>
+                        <td><a href="/products/<%= product.productId%>/details" style="display:block;"><%= product.productName %></a></td>
+                        <td><%= product.productCategory %></td>
+                        <td><%= parseFloat(product.productPrice).toFixed(2) %></td>
+                        <td><%= parseFloat(product.salePrice).toFixed(2) %></td>
+                        <td><%= moment(product.dateModified).format('Do MMM, YYYY HH:mm:ss')  %></td>
+                        <td>
+                            <a href="/products/<%= product.productId%>/edit" style="display:block;">Edit</a>
+                            <a href="/products/<%= product.productId%>/details" style="display:block;">Details</a>
+                        </td>
+                        </tr>    
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <%- include('../../partials/footer'); %>
+</footer>
+
+</body>
+</html>

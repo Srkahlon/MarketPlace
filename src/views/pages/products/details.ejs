@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h3><centre>Product Details</centre></h3>
+        <div class="form-group">
+            <label for="product_name"><strong>Product Name:</strong></label>
+            <%- product.productName %>
+        </div>
+        <div class="form-group">
+            <label for="product_category"><strong>Product Category:</strong></label>
+            <%- product.productCategory %>
+        </div>
+        <div class="form-group">
+            <label for="product_category"><strong>In Stock:</strong></label>
+            <%- product.productStock %>
+        </div>
+        <div class="form-group">
+            <label for="product_price"><strong>Product Price:</strong></label>
+            <%- product.productPrice %>
+        </div>
+        <div class="form-group">
+            <label for="product_sale_price"><strong>Product Sale Price:</strong></label>
+            <%- product.salePrice %>
+        </div>
+        <div class="card mb-3">
+          <img class="card-img-top" src="https://picsum.photos/400?image=430" alt="Image Not Found" width="200" height="200">
+          <div class="card-body">
+            <h5 class="card-title">Product Image</h5>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="product_sale_price"><strong>Last Modified:</strong></label>
+          <%= moment(product.dateModified).format('Do MMM, YYYY HH:mm:ss')  %>
+        </div>
+        <div class = "form-group">
+            <label for="viewed_by"><strong>Viewed By:</strong></label>
+            <ul class="list-group">
+                <% users.forEach(function(user) { %>
+                    <li class="list-group-item">
+                        <%= user.name %>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        <a href="/products" class="btn btn-primary">Back</a>
+    </div>
+</main>
+
+<footer>
+    <%- include('../../partials/footer'); %>
+</footer>
+
+</body>
+</html>

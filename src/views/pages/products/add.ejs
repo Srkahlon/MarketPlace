@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <form action="/products/add" method="post">
+            <h3><centre>Add Product</centre></h3>
+            <div class="form-group">
+                <label for="product_name">Product Name</label>
+                <input type="text" class="form-control" id="product_name" name= "product_name" required placeholder="Enter Product Name">
+            </div>
+            <div class="form-group">
+                <label for="product_category">Product Category</label>
+                <input type="text" class="form-control" id="product_category" name="product_category" placeholder="Enter Product Category" required>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="stock" id="in_stock" value=1 required>
+                <label class="form-check-label" for="in_stock">
+                  In stock
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="stock" id="out_of_stock" value=0 required>
+                <label class="form-check-label" for="out_of_stock">
+                  Out of Stock
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="product_price">Product Price</label>
+                <input type="text" class="form-control" id="product_price" name="product_price" placeholder="Enter Product Price" required pattern="^[1-9]\d*(\.\d+)?$" title="Only Numeric allowed">
+            </div>
+            <div class="form-group">
+                <label for="product_sale_price">Product Sale Price</label>
+                <input type="text" class="form-control" id="product_sale_price" name="product_sale_price" placeholder="Enter Product Sale Price" required pattern="^[1-9]\d*(\.\d+)?$" title="Only Numeric allowed">
+            </div>
+            <div class="form-group">
+                <label for="product_image_url">Product Image URL</label>
+                <input type="text" class="form-control" id="product_image_url" name="product_image_url" placeholder="Enter Product Image URL" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/products" class="btn btn-primary">Back</a>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <%- include('../../partials/footer'); %>
+</footer>
+
+</body>
+</html>

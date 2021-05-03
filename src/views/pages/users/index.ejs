@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <form action="/login" method="post">
+            <h5><centre>Select a User to Begin</centre></h5>
+            <div class="form-group">
+                <select id="user" name="user" class="form-control" required>
+                        <option value="">Please Select</option>
+                    <% users.forEach(function(user) { %>
+                        <option value="<%= user.id %>"><%= user.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <%- include('../../partials/footer'); %>
+</footer>
+
+</body>
+</html>
